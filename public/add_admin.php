@@ -4,26 +4,30 @@ require '../src/bootstrap.php';
 
 if (isset($_GET['login']) && isset($_GET['password'])) {
 
-    \validateRegisterUserForm($_GET);
+    \validateRegisterAdminForm($_GET);
 
     $user = new User();
     $user->fill($_GET);
     $user->save();
 
     echo sprintf(
-        'Created user with login "%s" and password "%s"',
+        'Created admin with login "%s" and password "%s"',
         $user->login,
         $user->password
     );
 }
 
-function validateRegisterUserForm(array $values)
+function validateRegisterAdminForm(array $values)
 {
-    if (! in_array($values['login'], ['pontifex1', 'pontifex2', 'pontifex3', 'pontifex4'])) {
+    if (! in_array($values['login'], ['admin1', 'admin2', 'admin3', 'admin4'])) {
         throw new \RuntimeException('Not valid login');
     }
 
     if (strlen($values['password']) < 1 || strlen($values['password']) > 5) {
         throw new \RuntimeException('Not valid password');
+    }
+
+    if ($values['is_admin'] !== "1") {
+        throw new \RuntimeException('Not valid is_admin');
     }
 }

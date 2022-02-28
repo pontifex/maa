@@ -8,5 +8,6 @@ Capsule::schema()->create('users', function ($table) {
     $table->increments('id');
     $table->string('login');
     $table->string('password');
+    $table->boolean('is_admin')->default(false);
     $table->timestamps();
 });
