@@ -14,5 +14,5 @@ echo sprintf(
     User::query()->where('is_admin', '=', 1)->get()->count()
 );
 
-echo '<br /><br /><a href="register_user.php">Register user</a>';
-echo '<br /><br /><a href="register_admin.php">Register admin</a>';
+echo '<br /><br /><a href="index_register_user.php">Register user</a>';
+echo '<br /><br /><a href="index_register_admin.php">Register admin</a>';
